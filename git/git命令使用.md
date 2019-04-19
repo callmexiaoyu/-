@@ -24,9 +24,9 @@
 
 #### 撤销修改
 
-+ `git checkout 文件名`
++ `git checkout --文件名`
 
-  将工作区的文件回退到缓存区，甚至是删除的文件，但新增文件无法比较
+  将工作区的文件回退到缓存区，甚至是删除的文件，但新增文件无法比较，`--`必须，否则切换分支
 
 + `git checkout`
 
@@ -81,11 +81,99 @@
 
 ## 远程同步
 
-+ 服务端新建一个空版本库
++ 上传
 
-  `git remote add origin https://github.com/callmexiaoyu/-.git`
+  + 服务端新建一个空版本库
+
+  + `git remote add origin https://github.com/callmexiaoyu/-.git`
+
+  + `git push -u origin master`
+
+    第一次推送加 -u 参数，执行命令输入name和password
+
+  + `git push origin master`
+
+    推送版本库
+
++ 下载
+
+  `git clone https://github.com/callmexiaoyu/本地文件夹`
+
+  仓库网址
+
++ 查看
+
+  `git remote`
+
+  `git remote -v`
 
 ***
+
+## 分支
+
++ 创建分支
+
+  `git branch 分支名`
+
++ 切换分支
+
+  `git checkout 分支名`
+
++ 创建并切换分支
+
+  `git checkout -b 分支名`
+
++ 检查分支
+
+  `git branch`
+
++ 分支融合
+
+  `git merge 分支名`
+
+  切换到主分支上将分支融合到主分支上
+
++ 分支删除
+
+  `git branch -d 分支名`
+
+#### bug分支
+
+文件未add到缓存区，同时也没提交，但功能未解决，不能形成版本提交，且现在需要切换到其他分支，此时切换分支导致缓存区被新的分支覆盖，stash保存在没有commit提交情况下，工作区以及缓存区保存起来，退回到刚拿到版本时候
+
++ `git stash`隐藏工作区和缓存区
+
+  多次创建，栈结构
+
++ `git stash list`展示存储的缓存区
+
++ `git stash apply`
+
+  读取最近刚保存的stash
+
++ `git stahs drop`
+
+  删除最近刚保存的stash
+
+***
+
+## 多人合作分支管理
+
++ 提交分支
+
+  `git push origin dev`
+
++ 克隆
+
++ `git checkout -b dev origin/dev`
+
+  创建本地分支
+
++ 提交分支，多人提交相同地方都修改，后来的提交上去报错
+
+  + 下载最新的分支，本地融合提交
+
+    `git pull`
 
 ## 规范
 
